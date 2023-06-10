@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "malloc.h"
 
 /**
  * naive_malloc - simple version of malloc
@@ -10,9 +11,15 @@
  */
 void *naive_malloc(size_t size)
 {
-	void *ptr;
+	mem_alloc_t *mem;
 
-	ptr = brk(size) + sizeof(size_t) + 10;
+	mem = NULL;
 
-	return (ptr);
+	/* Break */
+	mem->address = sbrk(0);
+
+	/* Extension */
+	mem->size = size + sizeof(size_t) + 10;
+
+	return (mem->address);
 }
