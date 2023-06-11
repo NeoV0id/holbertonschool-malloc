@@ -13,13 +13,12 @@ void *naive_malloc(size_t size)
 {
 	mem_alloc_t *mem;
 
-	mem = NULL;
-
-	/* Break */
-	mem->address = sbrk(0);
+	/*Break*/
+	mem = sbrk(0);
 
 	/* Extension */
-	mem->size = size + sizeof(size_t) + 10;
+        mem->size = size + sizeof(size_t) + 10;
+	mem->address = sbrk(mem->size);
 
 	return (mem->address);
 }
