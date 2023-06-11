@@ -13,7 +13,7 @@ void *naive_malloc(size_t size)
 {
 	void *mem;
 
-	mem = sbrk(size + sizeof(size_t) + 10);
+	mem = sbrk(size + sizeof(size_t));
 
 	if (mem == (void *) -1)
 		return (NULL);
