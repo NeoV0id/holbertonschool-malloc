@@ -11,15 +11,12 @@
  */
 void *naive_malloc(size_t size)
 {
-	mem_alloc_t *mem;
+	void *mem;
 
-	mem = sbrk(0);
+	mem = sbrk(size + sizeof(size_t) + 10);
 
-	mem->size = size + sizeof(size_t) + 10;
-	mem->address = sbrk(mem->size);
-
-	if (mem->address == (void *) -1)
+	if (mem == (void *) -1)
 		return (NULL);
 
-	return (mem->address);
+	return (mem);
 }

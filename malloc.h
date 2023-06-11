@@ -1,6 +1,8 @@
 #ifndef __MALLOC_H__
 #define __MALLOC_H__
 
+#include <stddef.h>
+
 /* Data Struct */
 
 /**
@@ -8,12 +10,13 @@
  *
  * @address: address of allocated chunk
  * @size: size of allocated chunk
- */
+ 
 typedef struct mem_alloc_s
 {
-	void *address;
+	void *head;
 	size_t size;
 } mem_alloc_t;
+*/
 
 /* Prototypes */
 void *naive_malloc(size_t size);
