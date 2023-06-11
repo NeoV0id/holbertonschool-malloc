@@ -11,12 +11,16 @@
  */
 void *naive_malloc(size_t size)
 {
-	void *mem;
+	mem_alloc_t *mem;
 
 	mem = sbrk(size + sizeof(size_t));
+	mem->size = size + sizeof(size_t);
+	mem->head = mem;
 
 	if (mem == (void *) -1)
 		return (NULL);
+	if (mem->size <= 10)
+                return (naive_malloc(mem->size));
 
 	return (mem);
 }
