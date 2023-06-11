@@ -20,7 +20,7 @@ void *naive_malloc(size_t size)
 	if (mem == (void *) -1)
 		return (NULL);
 	if (mem->size <= 10)
-                return (naive_malloc(mem->size));
+		return (naive_malloc(mem->size));
 
 	return (mem);
 }
