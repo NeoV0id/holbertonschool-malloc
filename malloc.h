@@ -4,19 +4,22 @@
 #include <stddef.h>
 
 /* Data Struct */
-
 /**
- * struct mem_alloc_s - size and address of chunk of memory
+ * struct mem_buffer_s - buffer to allocate
  *
- * @address: address of allocated chunk
- * @size: size of allocated chunk
+ * @buf: buffer
+ * @size: length of buffer
+ * @prev_offset: previous location of memory chunk's head
+ * @curr_offset: current location of memory chunk's head
  */
-typedef struct mem_alloc_s
+typedef struct mem_buffer_s
 {
-	void *head;
-	size_t size;
-} mem_alloc_t;
-
+        char *buf;
+        void *chunk;
+        size_t size;
+        uintptr_t prev_offset;
+        uintptr_t curr_offset;
+} mem_buffer_t;
 
 /* Prototypes */
 void *naive_malloc(size_t size);
