@@ -5,7 +5,7 @@
 #include "malloc.h"
 
 /**
- * allign: check memory alignement
+ * align - check memory alignement
  *
  * @ptr: ptr to chunk to test
  *
@@ -19,7 +19,8 @@ uintptr_t align(uintptr_t ptr)
 }
 
 /**
- * naive_malloc - simple version of malloc
+ * naive_malloc - simple version of malloc using sbrk
+ *
  * @size: size to allocate
  *
  * Return: pointer to allocated chunk
@@ -30,12 +31,12 @@ void *naive_malloc(size_t size)
 
 	mem = NULL;
 
-        mem->size = size + sizeof(size_t);
-        mem->chunk = sbrk(mem->size);
+	mem->size = size + sizeof(size_t);
+	mem->chunk = sbrk(mem->size);
 
 	if (mem == (void *) -1)
 		return (NULL);
-        mem->curr_offset = mem->size;
+	mem->curr_offset = mem->size;
 
 	if (mem->size < size)
 	{
