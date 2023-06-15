@@ -1,3 +1,4 @@
+#include <unistd.h>
 #include "malloc.h"
 
 /**
@@ -9,5 +10,13 @@
  */
 void *_malloc(size_t size)
 {
+	void *ptr;
+
+	ptr = sbrk(size);
+	if (ptr == (void *) - 1)
+		return (NULL);
+	else
+		return (ptr);
+
 	return (NULL);
 }

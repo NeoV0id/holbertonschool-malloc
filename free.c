@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "malloc.h"
 
 /**
@@ -9,4 +10,7 @@
  */
 void _free(void *ptr)
 {
+	ptr = NULL;
+	printf("%p\n", ptr);
+
 }

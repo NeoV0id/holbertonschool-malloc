@@ -2,6 +2,7 @@
 #define __MALLOC_H__
 
 #include <stddef.h>
+#include <inttypes.h>
 
 /* Data Struct */
 /**
